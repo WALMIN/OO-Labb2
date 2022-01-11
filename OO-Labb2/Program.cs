@@ -1,21 +1,21 @@
 ﻿using OO_Labb2;
 
-OrderService orderService = new OrderService();
+OrderService orderService = new OrderService(new EmailService());
 
 orderService.Process(new Order
 {
     Recipient = "example@example.com",
     ID = 12321,
     Priority = Priority.High,
-    Service = Service.Email,
     StreetAdress = "Some adress"
 });
 
-orderService.Process(new Order
+OrderService anotherOrderService = new OrderService(new SMSService());
+
+anotherOrderService.Process(new Order
 {
     Recipient = "+12345678901",
     ID = 98765,
     Priority = Priority.Low,
-    Service = Service.SMS,
     StreetAdress = "Another adress"
 });
