@@ -1,6 +1,6 @@
 ﻿using OO_Labb2;
 
-OrderService orderService = new OrderService(new EmailService());
+OrderService orderService = new OrderService(new ConsoleLogger(), new EmailService(new ConsoleLogger()));
 
 orderService.Process(new Order
 {
@@ -10,7 +10,7 @@ orderService.Process(new Order
     StreetAdress = "Some adress"
 });
 
-OrderService anotherOrderService = new OrderService(new SMSService());
+OrderService anotherOrderService = new OrderService(new ConsoleLogger(), new SMSService(new ConsoleLogger()));
 
 anotherOrderService.Process(new Order
 {
